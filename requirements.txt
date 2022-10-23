@@ -4,3 +4,4 @@ paho-mqtt==1.6.1
 opencv-python
 mediapipe==0.8.9.1
 pyglet==1.5.23
+cvzone
