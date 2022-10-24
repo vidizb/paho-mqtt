@@ -112,7 +112,7 @@ def process(img):
 
         for id in faceId:
             cv2.circle(img,face[id], 5, (0,0,255), cv2.FILLED)
-        return img
+    return img
 
 
 RTC_CONFIGURATION = RTCConfiguration(
