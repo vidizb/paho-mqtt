@@ -17,16 +17,6 @@ sound = pyglet.media.load("alarm.wav", streaming=False)
 people = False
 
 
-def sendTelegram():
-    path = 'C://'  # Replace your path directory
-    url = 'https://api.telegram.org/bot'
-    token = "5746323643:AAFtQBs1cIwc4bUWBZVu4u2F4X3vige1TA0"  # Replace Your Token Bot
-    chat_id = "739780150"  # Replace Your Chat ID
-    caption = "People Detected!!! "
-    cv2.imwrite(os.path.join(path, img_name), img)
-    files = {'photo': open(path + img_name, 'rb')}
-    resp = requests.post(url + token + '/sendPhoto?chat_id=' + chat_id + '&caption=' + caption, files=files)
-    print(f'Response Code: {resp.status_code}')
 
 def process(img):
     img.flags.writeable = False
@@ -37,7 +27,6 @@ def process(img):
     lmList, bboxInfo = detector.findPosition(img, bboxWithHands=False)
     img_name = f'image_{img_count}.png'
 
-    teleThread = threading.Thread(target=sendTelegram, args=())
     soundThread = threading.Thread(target=sound.play, args=())
 
     if bboxInfo:
@@ -45,6 +34,15 @@ def process(img):
         cv2.putText(img, "PEOPLE DETECTED!!!", (130, 60),
                     cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 2)
         breakcount += 1
+        path = 'D://'  # Replace your path directory
+        url = 'https://api.telegram.org/bot'
+        token = "5746323643:AAFtQBs1cIwc4bUWBZVu4u2F4X3vige1TA0"  # Replace Your Token Bot
+        chat_id = "739780150"  # Replace Your Chat ID
+        caption = "People Detected!!! "
+        cv2.imwrite(os.path.join(path, img_name), img)
+        files = {'photo': open(path + img_name, 'rb')}
+        resp = requests.post(url + token + '/sendPhoto?chat_id=' + chat_id + '&caption=' + caption, files=files)
+        print(f'Response Code: {resp.status_code}')
 
         if breakcount >= 30:
             if people == False:
@@ -52,7 +50,7 @@ def process(img):
                 soundThread.start()
                 teleThread.start()
                 people = not people
-    sendTelegram()
+         
     else:
         breakcount = 0
         if people:
