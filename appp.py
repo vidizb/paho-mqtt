@@ -30,7 +30,7 @@ def process(img):
     soundThread = threading.Thread(target=sound.play, args=())
 
     if bboxInfo:
-        file_bytes = np.asarray(bytearray(img_name.read()),\
+        file_bytes = np.asarray(bytearray(img.read()),\
         dtype=np.uint8)
         img = cv2.imdecode(file_bytes, 1)
         cv2.rectangle(img, (120, 20), (470, 80), (0, 0, 255), cv2.FILLED)
