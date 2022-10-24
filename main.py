@@ -3,6 +3,8 @@ import pyglet.media
 from cvzone.FaceMeshModule import FaceMeshDetector
 import csv
 from datetime import datetime
+import streamlit as st
+from streamlit_webrtc import webrtc_streamer, WebRtcMode, RTCConfiguration
 
 detector = FaceMeshDetector(maxFaces=1)
 
