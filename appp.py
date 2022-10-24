@@ -10,7 +10,7 @@ import pyglet.media
 import threading
 import os
 import requests
-from array import array
+from numpy import array
     
 
 detector = PoseDetector()
