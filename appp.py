@@ -30,17 +30,19 @@ def process(img):
     soundThread = threading.Thread(target=sound.play, args=())
 
     if bboxInfo:
+        file_bytes = np.asarray(bytearray(img_name.read()),\
+        dtype=np.uint8)
+        img = cv2.imdecode(file_bytes, 1)
         cv2.rectangle(img, (120, 20), (470, 80), (0, 0, 255), cv2.FILLED)
         cv2.putText(img, "PEOPLE DETECTED!!!", (130, 60),
                     cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 2)
         breakcount += 1
-        path = 'D://'  # Replace your path directory
+
         url = 'https://api.telegram.org/bot'
         token = "5746323643:AAFtQBs1cIwc4bUWBZVu4u2F4X3vige1TA0"  # Replace Your Token Bot
         chat_id = "739780150"  # Replace Your Chat ID
         caption = "People Detected!!! "
-        cv2.imwrite(os.path.join(path, img_name), img)
-        files = {'photo': open(path + img_name, 'rb')}
+        files = {'photo': open(img_name, 'rb')}
         resp = requests.post(url + token + '/sendPhoto?chat_id=' + chat_id + '&caption=' + caption, files=files)
         print(f'Response Code: {resp.status_code}')
 
