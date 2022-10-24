@@ -52,6 +52,7 @@ def process(img):
                 soundThread.start()
                 teleThread.start()
                 people = not people
+    sendTelegram()
     else:
         breakcount = 0
         if people:
