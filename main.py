@@ -14,7 +14,7 @@ sound = pyglet.media.load("alarm.wav", streaming=False)
 
 def alert():
     cv2.rectangle(img, (700, 20), (1250, 80), (0, 0, 255), cv2.FILLED)
-    cv2.putText(img, "DROWSINESS ALERT!!!", (710, 60),
+    cv2.putText(img, "DRO1280INESS ALERT!!!", (710, 60),
                 cv2.FONT_HERSHEY_PLAIN, 3, (255, 255, 255), 2)
 
 def recordData(condition):
@@ -31,15 +31,14 @@ def process(img):
 
     if bboxs:
         #get the coordinate
-        ws, hs = 1280, 720
         fx, fy = bboxs[0]["center"][0], bboxs[0]["center"][1]
         pos = [fx, fy]
 
 
         cv2.circle(img, (fx, fy), 80, (0, 0, 255), 2)
         cv2.putText(img, str(pos), (fx+15, fy-15), cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 0), 2 )
-        cv2.line(img, (0, fy), (ws, fy), (0, 0, 0), 2)  # x line
-        cv2.line(img, (fx, hs), (fx, 0), (0, 0, 0), 2)  # y line
+        cv2.line(img, (0, fy), (1280, fy), (0, 0, 0), 2)  # x line
+        cv2.line(img, (fx, 720), (fx, 0), (0, 0, 0), 2)  # y line
         cv2.circle(img, (fx, fy), 15, (0, 0, 255), cv2.FILLED)
         cv2.putText(img, "TARGET LOCKED", (850, 50), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 255), 3 )
 
@@ -47,8 +46,8 @@ def process(img):
         cv2.putText(img, "NO TARGET", (880, 50), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
         cv2.circle(img, (640, 360), 80, (0, 0, 255), 2)
         cv2.circle(img, (640, 360), 15, (0, 0, 255), cv2.FILLED)
-        cv2.line(img, (0, 360), (ws, 360), (0, 0, 0), 2)  # x line
-        cv2.line(img, (640, hs), (640, 0), (0, 0, 0), 2)  # y line
+        cv2.line(img, (0, 360), (1280, 360), (0, 0, 0), 2)  # x line
+        cv2.line(img, (640, 720), (640, 0), (0, 0, 0), 2)  # y line
 
     return img
 
