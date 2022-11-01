@@ -31,6 +31,7 @@ def process(img):
 
     if bboxs:
         #get the coordinate
+        ws, hs = 1280, 720
         fx, fy = bboxs[0]["center"][0], bboxs[0]["center"][1]
         pos = [fx, fy]
 
