@@ -30,7 +30,6 @@ def process(img):
     img.flags.writeable = False
     img = cv2.flip(img, 1)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    results = hands.process(img)
     img = cv2.cvtColor(img,cv2.COLOR_RGB2BGR)
     img, faces = detector.findFaceMesh(img, draw=False)
 
