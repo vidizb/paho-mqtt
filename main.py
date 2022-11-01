@@ -1,14 +1,14 @@
 import cv2
 import pyglet.media
-from cvzone.FaceMeshModule import FaceMeshDetector
+from cvzone.FaceDetectionModule import FaceDetector
 import av
 import csv
 from datetime import datetime
 import streamlit as st
 from streamlit_webrtc import webrtc_streamer, WebRtcMode, RTCConfiguration
 
-detector = FaceMeshDetector(maxFaces=1)
 
+detector = FaceDetector()
 
 sound = pyglet.media.load("alarm.wav", streaming=False)
 
