@@ -9,9 +9,6 @@ from streamlit_webrtc import webrtc_streamer, WebRtcMode, RTCConfiguration
 
 detector = FaceMeshDetector(maxFaces=1)
 
-breakcount_s, breakcount_y = 0, 0
-counter_s, counter_y = 0, 0
-state_s, state_y = False, False
 
 sound = pyglet.media.load("alarm.wav", streaming=False)
 
@@ -71,6 +68,10 @@ def process(img):
                     cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 2)
 
         #drowsiness detection logic
+        
+        breakcount_s, breakcount_y = 0, 0
+        counter_s, counter_y = 0, 0
+        state_s, state_y = False, False
 
         #------------------------Eye-----------------------------
         if eyeLeft_ratio <= 50 and eyeRight_ratio <= 50:
