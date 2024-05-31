@@ -2,6 +2,6 @@ streamlit
 streamlit-webrtc==0.35.1
 paho-mqtt==1.6.1
 opencv-python
-mediapipe==0.8.9.1
+mediapipe==0.10.14
 pyglet==1.5.23
 cvzone
