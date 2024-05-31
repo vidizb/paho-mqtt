@@ -10,6 +10,7 @@ import pyglet.media
 import threading
 import os
 import requests
+from streamlit.scriptrunner.script_run_context import get_script_run_ctx
     
 
 detector = PoseDetector()
